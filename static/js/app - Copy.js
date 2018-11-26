@@ -23,26 +23,16 @@ submit.on("click", function() {
 
     // Select the input element and get the raw HTML node
     var inputElement = d3.select("#datetime");
-    var inputCity = d3.select("#city");
-    var inputState = d3.select("#state");
-    var inputCountry = d3.select("#country");
-    var inputShape = d3.select("#shape");
-    //console.log(inputElement);
-    //console.log(inputCity);  
+   // console.log(inputElement);
 
     // Get the value property of the input element
     var inputDate = inputElement.property("value");
-    var cityValue = inputCity.property("value");
-    var stateValue = inputState.property("value");
-    var countryValue = inputCountry.property("value");
-    var shapeValue = inputShape.property("value");
     //console.log(inputDate);
-    //console.log(cityValue);
-
-    // Use the form input to filter the data by date and/or city
+    
+    // Use the form input to filter the data by date
     tableData.forEach(function(row){
         //console.log(row.datetime);
-        if((row.datetime == inputDate || !inputDate) && (row.city === cityValue || !cityValue) && (row.state === stateValue || !stateValue) && (row.country === countryValue || !countryValue) && (row.shape === shapeValue || !shapeValue)){
+        if(row.datetime == inputDate){
             var newRow = selectTable.append("tr");
             Object.entries(row).forEach(function([key, value]){
                 //console.log(key, value);
